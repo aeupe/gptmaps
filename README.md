@@ -4,7 +4,7 @@
 
 GPT Maps integrates GPT-4 with Google Maps.
 
-![gptmaps](https://github.com/aeupe/gptmaps/assets/25138303/28f874f2-3cdc-42d2-990b-19123c350f5b)
+![gptmaps](https://github.com/aeupe/gptmaps/assets/25138303/8d2594d0-bfe4-4830-b476-90664da7ad66)
 
 ## Getting started
 Run
