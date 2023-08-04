@@ -1,0 +1,48 @@
+a {
+  text-decoration: none !important;
+}
+
+.prompt-panel {
+  position: fixed;
+  display: flex;
+  padding: 12px;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+}
+
+.map-panel {
+  display: flex; 
+  flex: 1; 
+  height: 100%;
+  width: 100%;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.2);
+  background-color: #e8eaed;
+}
+
+.query-input {
+  align-items: center;
+}
+
+.query-input .MuiInputBase-root {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: white;
+}
+
+.query-input textarea {
+  padding-bottom: 12px;
+  padding-top: 12px;
+  max-height: 80px;
+  overflow: auto;
+}
+
+.query-input .MuiButton-contained {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.gm-style-iw {
+  max-width: 200px !important;
+}

@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  gptmaps-nginx:
+    container_name: gptmaps-nginx
+    image: 'nginx'
+    ports:
+      - "127.0.0.1:8800:80"
+    volumes:
+      - ./nginx-templates/:/etc/nginx/templates  
+      - ./ssl/:/etc/nginx/ssl
+    depends_on:
+      - gptmaps-api
+      - gptmaps-frontend
+  gptmaps-api:
+    container_name: gptmaps-api
+    image: gptmaps-api
+    build:
+      context: gptmaps-api/
+    env_file:
+      - gptmaps.env
+  gptmaps-frontend:
+    container_name: gptmaps-frontend
+    image: gptmaps-frontend
+    build:
+      context: gptmaps-frontend/
+      dockerfile: Dockerfile
+      args: 
+        - REACT_APP_GPTMAPS_API_URL=$REACT_APP_GPTMAPS_API_URL

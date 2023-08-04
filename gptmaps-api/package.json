@@ -1,0 +1,21 @@
+{
+  "name": "gptmaps",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "openai": "^3.2.1",
+    "pm2": "^5.1.2"
+  },
+  "scripts": {
+    "pm2": "pm2",
+    "start": "pm2 start server.js --no-daemon",
+    "start:dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

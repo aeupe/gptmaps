@@ -1,0 +1,42 @@
+log_format json escape=json '{'
+    '"time_local":"$time_local",'
+    '"remote_addr": "$remote_addr",'
+    '"request":"$request",'
+    '"request_uri":"$request_uri",'
+    '"request_method":"$request_method",'
+    '"status": "$status",'
+    '"request_time":"$request_time",'
+    '"remote_user": "$remote_user",'
+    '"remote_port": "$remote_port",'
+    '"body_bytes_sent": "$body_bytes_sent",'
+    '"bytes_sent": "$bytes_sent", '
+    '"request_length": "$request_length", '
+    '"connection_requests": "$connection_requests",'
+    '"http_host": "$http_host", '
+    '"http_referrer":"$http_referer",'
+    '"upstream": "$upstream_addr", '
+    '"upstream_connect_time": "$upstream_connect_time", '
+    '"upstream_header_time": "$upstream_header_time", '
+    '"upstream_response_time": "$upstream_response_time", '
+    '"upstream_response_length": "$upstream_response_length", '
+    '"upstream_cache_status": "$upstream_cache_status", '
+    '"ssl_protocol": "$ssl_protocol", '
+    '"ssl_cipher": "$ssl_cipher", '
+    '"scheme": "$scheme", '
+    '"http_user_agent":"$http_user_agent", '
+    '"http_x_forwarded_for":"$http_x_forwarded_for"'
+'}';
+
+server {
+    access_log /dev/stdout json;
+
+    location /api {
+        rewrite ^/api$ /  break;
+        rewrite ^/api/(.*) /$1  break;
+        proxy_pass http://gptmaps-api:8080;
+    }
+    location / {
+        proxy_pass http://gptmaps-frontend:3000;
+    }
+    listen 80;
+}
